@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Grade Calcy</title>
+    <style>
+        *{
+           padding: 0; 
+           margin: 0;
+           box-sizing: border-box;
+        }
+
+        /* Main Heading  */
+        .container h1{
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        .container h1:hover{
+            cursor: pointer;
+            color: white;
+        }
+
+        /* Main Container  */
+        .container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            width: 100%;
+            height: 100vh;
+            background-color: #8A4FFF ;
+        }
+        /* Card  */
+         .card{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            background-color: #b5a9cf;
+            width: 60%;
+            height: 50vh;
+            box-shadow: 7px 7px 12px 2px #000;
+        }
+
+        /* Card Right Side  */
+         .right{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin-left: 20px;
+        }
+
+        .right input{
+            width: 350px;
+            padding: 6px;
+            margin: 5px 0;
+            font-size: 16px;
+
+        }
+
+        .right button{
+            margin-top: 5px;
+            width: 350px;
+            padding: 6px;
+            background-color: #8A4FFF;
+            border: none;
+            border-radius: 7px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .right button:hover{
+            box-shadow: 4px 4px 6px 2px #000;
+            color: white;
+        }
+
+        /* Card Left Side  */
+         .left{
+            margin-right: 30px;
+            font-size: 24px;
+            padding-left: 10px;
+            border-left: 8px solid #8A4FFF;
+            cursor: pointer;
+        }
+        .left h2:hover{
+            color: white;
+        }
+
+        /* Result  */
+
+        .result{
+            display: none;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            font-size: 25px;
+            font-weight: bolder;
+            background-color: #b5a9cf;
+            margin-top: 20px;
+            width: 60%;
+            height: 12vh;
+            box-shadow: 7px 7px 12px 2px #000;
+            padding: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <center><h1>Sudent Grade Calculater</h1></center>
+        <div class="card">
+            <div class="left">
+                <h2>STUDENT</h2>
+                <h2>GRADE</h2>
+                <h2>CALCY</h2>
+            </div>
+            <div class="right">
+                <input type="text" id="wp" placeholder="Web Programming">
+                <input type="text" id="ds" placeholder="Data Science">
+                <input type="text" id="cc" placeholder="Cloud Computing">
+                <input type="text" id="math" placeholder="Mathematics">
+                <button onclick="calcy()">Calculate</button>
+            </div>
+        </div>
+        <div class="result" id="result">
+            <p id="percentage"></p>
+        </div>
+    </div>
+    
+    <script>
+        const calcy = () =>{
+            // Getting values From User 
+            let wp = document.getElementById("wp").value;
+            let ds = document.getElementById("ds").value;
+            let cc = document.getElementById("cc").value;
+            let math = document.getElementById("math").value;
+            let grade = "";
+
+            // Calculate The Total Of All Subjects
+            let total = parseFloat(wp) + parseFloat(ds) + parseFloat(cc) + parseFloat(math);
+
+            // Calculate The Percentage 
+            let perc = (total/400) * 100;
+
+            // Calculate The Grade Of Student 
+            if(perc <= 100 && perc >= 80){
+                grade = "A";
+            }else if(perc <= 79 && perc >= 60){
+                grade = "B";
+            }else if(perc <= 59 && perc >= 40){
+                grade = "C";
+            }else{
+                grade = "F";
+            }
+            
+            // Add Condition To Show Student Pass Or Fail 
+            if(perc >= 39.5){
+                document.getElementById('percentage').innerHTML = `Out Of 400 Your Total Is ${total} And Percentage Is ${perc}%. <br> Your Grade Is ${grade}. You Are Pass.`
+                document.getElementById('result').style.display = "flex";
+            }else{
+                document.getElementById('percentage').innerHTML = `Out Of 400 Your Total Is ${total} And Percentage Is ${perc}%. <br> Your Grade Is ${grade}. You Are Fail.`
+                document.getElementById('result').style.display = "flex";
+            }
+        }
+    </script>
+</body>
+</html>
