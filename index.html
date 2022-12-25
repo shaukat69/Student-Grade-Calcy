@@ -107,6 +107,17 @@
             padding: 10px;
         }
 
+        /* Credit */
+        .credit{
+            margin-top: 20px;
+        }
+        .credit a {
+            font-size: 30px;
+            text-decoration: none;
+            font-weight: 900;
+            color: white;
+            padding-bottom: 10px;
+        }
     </style>
 </head>
 <body>
@@ -119,15 +130,18 @@
                 <h2>CALCY</h2>
             </div>
             <div class="right">
-                <input type="text" id="wp" placeholder="Web Programming">
-                <input type="text" id="ds" placeholder="Data Science">
-                <input type="text" id="cc" placeholder="Cloud Computing">
-                <input type="text" id="math" placeholder="Mathematics">
-                <button onclick="calcy()">Calculate</button>
+                <input type="text" id="wp" placeholder="Web Programming" required>
+                <input type="text" id="ds" placeholder="Data Science" required>
+                <input type="text" id="cc" placeholder="Cloud Computing" required>
+                <input type="text" id="math" placeholder="Mathematics" required>
+                <button type="submit" onclick="calcy()">Calculate</button>
             </div>
         </div>
         <div class="result" id="result">
             <p id="percentage"></p>
+        </div>
+        <div class="credit">
+            <a href="https://github.com/shauky6963">Created By @shauky6963</a>
         </div>
     </div>
     
@@ -140,30 +154,36 @@
             let math = document.getElementById("math").value;
             let grade = "";
 
-            // Calculate The Total Of All Subjects
-            let total = parseFloat(wp) + parseFloat(ds) + parseFloat(cc) + parseFloat(math);
-
-            // Calculate The Percentage 
-            let perc = (total/400) * 100;
-
-            // Calculate The Grade Of Student 
-            if(perc <= 100 && perc >= 80){
-                grade = "A";
-            }else if(perc <= 79 && perc >= 60){
-                grade = "B";
-            }else if(perc <= 59 && perc >= 40){
-                grade = "C";
+            if( wp == "" || ds == "" || cc == "" || math == ""){
+                alert("Please Fillup Marks To Calculate!!")
+            }else if(wp >= 101 || ds >= 101 || cc >= 101 || math >= 101){
+                alert("Please Enter Valid Marks!!")
             }else{
-                grade = "F";
-            }
-            
-            // Add Condition To Show Student Pass Or Fail 
-            if(perc >= 39.5){
-                document.getElementById('percentage').innerHTML = `Out Of 400 Your Total Is ${total} And Percentage Is ${perc}%. <br> Your Grade Is ${grade}. You Are Pass.`
-                document.getElementById('result').style.display = "flex";
-            }else{
-                document.getElementById('percentage').innerHTML = `Out Of 400 Your Total Is ${total} And Percentage Is ${perc}%. <br> Your Grade Is ${grade}. You Are Fail.`
-                document.getElementById('result').style.display = "flex";
+                // Calculate The Total Of All Subjects
+                let total = parseFloat(wp) + parseFloat(ds) + parseFloat(cc) + parseFloat(math);
+    
+                // Calculate The Percentage 
+                let perc = (total/400) * 100;
+    
+                // Calculate The Grade Of Student 
+                if(perc <= 100 && perc >= 80){
+                    grade = "A";
+                }else if(perc <= 79 && perc >= 60){
+                    grade = "B";
+                }else if(perc <= 59 && perc >= 40){
+                    grade = "C";
+                }else{
+                    grade = "F";
+                }
+                
+                // Add Condition To Show Student Pass Or Fail 
+                if(perc >= 39.5){
+                    document.getElementById('percentage').innerHTML = `Out Of 400 Your Total Is ${total} And Percentage Is ${perc}%. <br> Your Grade Is ${grade}. You Are Pass.`
+                    document.getElementById('result').style.display = "flex";
+                }else{
+                    document.getElementById('percentage').innerHTML = `Out Of 400 Your Total Is ${total} And Percentage Is ${perc}%. <br> Your Grade Is ${grade}. You Are Fail.`
+                    document.getElementById('result').style.display = "flex";
+                }
             }
         }
     </script>
