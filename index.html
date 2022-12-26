@@ -380,18 +380,18 @@
           let perc = (total / 400) * 100;
 
           // Calculate The Grade Of Student
-          if (perc <= 100 && perc >= 80) {
+          if (perc <= 100 && perc >= 79) {
             grade = "A";
-          } else if (perc <= 79 && perc >= 60) {
+          } else if (perc <= 80 && perc >= 59) {
             grade = "B";
-          } else if (perc <= 59 && perc >= 40) {
+          } else if (perc <= 60 && perc >= 40) {
             grade = "C";
           } else {
             grade = "F";
           }
 
           // Add Condition To Show Student Pass Or Fail
-          if (perc >= 39.5) {
+          if (perc >= 40) {
             document.getElementById(
               "percentage"
             ).innerHTML = `Out Of 400 Your Total Is ${total} And Percentage Is ${perc}%. <br> Your Grade Is ${grade}. You Are Pass.`;
