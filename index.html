@@ -1,191 +1,378 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Student Grade Calcy</title>
     <style>
-        *{
-           padding: 0; 
-           margin: 0;
-           box-sizing: border-box;
-        }
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
 
-        /* Main Heading  */
-        .container h1{
-            font-size: 40px;
-            margin-bottom: 20px;
-        }
+      /* Main Heading  */
+      .container h1 {
+        font-size: 40px;
+        margin-bottom: 20px;
+      }
 
-        .container h1:hover{
-            cursor: pointer;
-            color: white;
-        }
+      .container h1:hover {
+        cursor: pointer;
+        color: white;
+      }
 
-        /* Main Container  */
-        .container{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            width: 100%;
-            height: 100vh;
-            background-color: #8A4FFF ;
-        }
-        /* Card  */
-         .card{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 12px;
-            background-color: #b5a9cf;
-            width: 60%;
-            height: 50vh;
-            box-shadow: 7px 7px 12px 2px #000;
-        }
+      /* Main Container  */
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+        height: 100vh;
+        background-color: #8a4fff;
+      }
+      /* Card  */
+      .card {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+        background-color: #b5a9cf;
+        width: 60%;
+        height: 50vh;
+        box-shadow: 7px 7px 12px 2px #000;
+      }
 
-        /* Card Right Side  */
-         .right{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            margin-left: 20px;
-        }
+      /* Card Right Side  */
+      .right {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin-left: 20px;
+      }
 
+      .right input {
+        width: 350px;
+        padding: 6px;
+        margin: 5px 0;
+        font-size: 16px;
+        border-radius: 6px;
+        outline: none;
+      }
+
+      .right button {
+        margin-top: 5px;
+        width: 350px;
+        padding: 6px;
+        background-color: #8a4fff;
+        border: none;
+        border-radius: 7px;
+        font-weight: bold;
+        cursor: pointer;
+        font-size: 16px;
+      }
+      .right button:hover {
+        box-shadow: 4px 4px 6px 2px #000;
+        color: white;
+      }
+
+      /* Card Left Side  */
+      .left {
+        margin-right: 30px;
+        font-size: 24px;
+        padding-left: 10px;
+        border-left: 8px solid #8a4fff;
+        cursor: pointer;
+      }
+      .left h2:hover {
+        color: white;
+      }
+
+      /* Result  */
+
+      .result {
+        display: none;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+        font-size: 25px;
+        font-weight: bolder;
+        background-color: #b5a9cf;
+        margin-top: 20px;
+        width: 60%;
+        height: 12vh;
+        box-shadow: 7px 7px 12px 2px #000;
+        padding: 10px;
+      }
+
+      /* Credit */
+      .credit {
+        margin-top: 20px;
+      }
+      .credit a {
+        font-size: 30px;
+        text-decoration: none;
+        font-weight: 900;
+        color: white;
+        padding-bottom: 10px;
+      }
+
+      /* Media Query  */
+      @media (min-width: 980px) and (max-width: 1200px) {
+      
+        .card {
+          width: 90%;
+          height: 70vh;
+        }
+        h2 {
+          font-size: 30px;
+        }
+        .left{
+            margin-bottom: 12px;
+        }
+        .right{
+            margin-left: 0;
+        }
         .right input{
-            width: 350px;
-            padding: 6px;
-            margin: 5px 0;
-            font-size: 16px;
-
+            width: 580px;
         }
-
-        .right button{
-            margin-top: 5px;
-            width: 350px;
-            padding: 6px;
-            background-color: #8A4FFF;
-            border: none;
-            border-radius: 7px;
-            font-weight: bold;
-            cursor: pointer;
-            font-size: 16px;
+       .right button{
+            width: 580px;
         }
-        .right button:hover{
-            box-shadow: 4px 4px 6px 2px #000;
-            color: white;
-        }
+      }
 
-        /* Card Left Side  */
-         .left{
-            margin-right: 30px;
-            font-size: 24px;
-            padding-left: 10px;
-            border-left: 8px solid #8A4FFF;
-            cursor: pointer;
+      @media (min-width: 780px) and (max-width: 980px) {
+        .container h1 {
+          display: none;
         }
-        .left h2:hover{
-            color: white;
+        .card {
+          width: 90%;
+          height: 80vh;
         }
-
-        /* Result  */
-
-        .result{
-            display: none;
-            align-items: center;
-            justify-content: center;
-            border-radius: 12px;
-            font-size: 25px;
-            font-weight: bolder;
-            background-color: #b5a9cf;
-            margin-top: 20px;
-            width: 60%;
-            height: 12vh;
-            box-shadow: 7px 7px 12px 2px #000;
-            padding: 10px;
+        h2 {
+          font-size: 30px;
         }
+        .left{
+            margin-bottom: 12px;
+        }
+        .right{
+            margin-left: 0;
+        }
+        .right input{
+            width: 420px;
+        }
+       .right button{
+            width: 420px;
+        }
+      }
 
-        /* Credit */
-        .credit{
-            margin-top: 20px;
+      @media (min-width: 680px) and (max-width: 780px) {
+        .container h1 {
+          display: none;
+        }
+        .card {
+          width: 90%;
+          height: 80vh;
+        }
+        h2 {
+          font-size: 30px;
+        }
+        .left{
+            margin-bottom: 12px;
+        }
+        .right{
+            margin-left: 0;
+        }
+        .right input{
+            width: 380px;
+        }
+       .right button{
+            width: 380px;
+        }
+      }
+
+      @media (min-width: 580px) and (max-width: 680px) {
+        .container h1 {
+          display: none;
+        }
+        .card {
+          width: 90%;
+          height: 80vh;
+        }
+        h2 {
+          font-size: 22px;
+        }
+        .card {
+          flex-direction: column;
+        }
+        .left{
+            margin-bottom: 12px;
+        }
+        .right{
+            margin-left: 0;
+        }
+        .right input{
+            width: 380px;
+        }
+       .right button{
+            width: 380px;
+        }
+      }
+
+      @media (min-width: 480px) and (max-width: 580px) {
+        .container h1 {
+          display: none;
+        }
+        .card {
+          width: 90%;
+          height: 80vh;
+        }
+        h2 {
+          font-size: 22px;
+        }
+        .card {
+          flex-direction: column;
+        }
+        .left{
+            margin-bottom: 12px;
+        }
+        .right{
+            margin-left: 0;
+        }
+      }
+
+      @media (min-width: 400px) and (max-width: 480px) {
+        .container h1 {
+          display: none;
+        }
+        .card {
+          width: 90%;
+        }
+        h2 {
+          font-size: 22px;
+        }
+        .card {
+          flex-direction: column;
+        }
+        .left{
+            margin-bottom: 12px;
+        }
+        .right{
+            margin-left: 0;
+        }
+      }
+
+      @media (min-width: 300px) and (max-width: 400px) {
+        .container h1 {
+          display: none;
+        }
+        .card {
+          width: 90%;
+        }
+        .right{
+            margin-left: 0;
+        }
+       .right input{
+            width: 250px;
+        }
+       .right button{
+            width: 250px;
+        }
+        h2 {
+          font-size: 22px;
+        }
+        .card {
+          flex-direction: column;
+        }
+        .left{
+            margin-bottom: 12px;
         }
         .credit a {
-            font-size: 30px;
-            text-decoration: none;
-            font-weight: 900;
-            color: white;
-            padding-bottom: 10px;
+            font-size: 20px;
         }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <center><h1>Sudent Grade Calculater</h1></center>
-        <div class="card">
-            <div class="left">
-                <h2>STUDENT</h2>
-                <h2>GRADE</h2>
-                <h2>CALCY</h2>
-            </div>
-            <div class="right">
-                <input type="text" id="wp" placeholder="Web Programming" required>
-                <input type="text" id="ds" placeholder="Data Science" required>
-                <input type="text" id="cc" placeholder="Cloud Computing" required>
-                <input type="text" id="math" placeholder="Mathematics" required>
-                <button type="submit" onclick="calcy()">Calculate</button>
-            </div>
+      <center><h1>Sudent Grade Calculater</h1></center>
+      <div class="card">
+        <div class="left">
+          <h2>STUDENT</h2>
+          <h2>GRADE</h2>
+          <h2>CALCY</h2>
         </div>
-        <div class="result" id="result">
-            <p id="percentage"></p>
+        <div class="right">
+          <input type="text" id="wp" placeholder="Web Programming" required />
+          <input type="text" id="ds" placeholder="Data Science" required />
+          <input type="text" id="cc" placeholder="Cloud Computing" required />
+          <input type="text" id="math" placeholder="Mathematics" required />
+          <button type="submit" onclick="calcy()">Calculate</button>
         </div>
-        <div class="credit">
-            <a href="https://github.com/shauky6963">Created By @shauky6963</a>
-        </div>
+      </div>
+      <div class="result" id="result">
+        <p id="percentage"></p>
+      </div>
+      <div class="credit">
+        <a href="https://github.com/shauky6963">Created By @shauky6963</a>
+      </div>
     </div>
-    
-    <script>
-        const calcy = () =>{
-            // Getting values From User 
-            let wp = document.getElementById("wp").value;
-            let ds = document.getElementById("ds").value;
-            let cc = document.getElementById("cc").value;
-            let math = document.getElementById("math").value;
-            let grade = "";
 
-            if( wp == "" || ds == "" || cc == "" || math == ""){
-                alert("Please Fillup Marks To Calculate!!")
-            }else if(wp >= 101 || ds >= 101 || cc >= 101 || math >= 101){
-                alert("Please Enter Valid Marks!!")
-            }else{
-                // Calculate The Total Of All Subjects
-                let total = parseFloat(wp) + parseFloat(ds) + parseFloat(cc) + parseFloat(math);
-    
-                // Calculate The Percentage 
-                let perc = (total/400) * 100;
-    
-                // Calculate The Grade Of Student 
-                if(perc <= 100 && perc >= 80){
-                    grade = "A";
-                }else if(perc <= 79 && perc >= 60){
-                    grade = "B";
-                }else if(perc <= 59 && perc >= 40){
-                    grade = "C";
-                }else{
-                    grade = "F";
-                }
-                
-                // Add Condition To Show Student Pass Or Fail 
-                if(perc >= 39.5){
-                    document.getElementById('percentage').innerHTML = `Out Of 400 Your Total Is ${total} And Percentage Is ${perc}%. <br> Your Grade Is ${grade}. You Are Pass.`
-                    document.getElementById('result').style.display = "flex";
-                }else{
-                    document.getElementById('percentage').innerHTML = `Out Of 400 Your Total Is ${total} And Percentage Is ${perc}%. <br> Your Grade Is ${grade}. You Are Fail.`
-                    document.getElementById('result').style.display = "flex";
-                }
-            }
+    <script>
+      const calcy = () => {
+        // Getting values From User
+        let wp = document.getElementById("wp").value;
+        let ds = document.getElementById("ds").value;
+        let cc = document.getElementById("cc").value;
+        let math = document.getElementById("math").value;
+        let grade = "";
+
+        if (wp == "" || ds == "" || cc == "" || math == "") {
+          alert("Please Fillup Marks To Calculate!!");
+        } else if (wp >= 101 || ds >= 101 || cc >= 101 || math >= 101) {
+          alert("Please Enter Valid Marks!!");
+        } else {
+          // Calculate The Total Of All Subjects
+          let total =
+            parseFloat(wp) + parseFloat(ds) + parseFloat(cc) + parseFloat(math);
+
+          // Calculate The Percentage
+          let perc = (total / 400) * 100;
+
+          // Calculate The Grade Of Student
+          if (perc <= 100 && perc >= 80) {
+            grade = "A";
+          } else if (perc <= 79 && perc >= 60) {
+            grade = "B";
+          } else if (perc <= 59 && perc >= 40) {
+            grade = "C";
+          } else {
+            grade = "F";
+          }
+
+          // Add Condition To Show Student Pass Or Fail
+          if (perc >= 39.5) {
+            document.getElementById(
+              "percentage"
+            ).innerHTML = `Out Of 400 Your Total Is ${total} And Percentage Is ${perc}%. <br> Your Grade Is ${grade}. You Are Pass.`;
+            document.getElementById("result").style.display = "flex";
+          } else {
+            document.getElementById(
+              "percentage"
+            ).innerHTML = `Out Of 400 Your Total Is ${total} And Percentage Is ${perc}%. <br> Your Grade Is ${grade}. You Are Fail.`;
+            document.getElementById("result").style.display = "flex";
+          }
         }
+      };
     </script>
-</body>
+  </body>
+  <!-- 
+320px — 480px: Mobile devices
+481px — 768px: iPads, Tablets
+769px — 1024px: Small screens, laptops
+1025px — 1200px: Desktops, large screens
+1201px and more —  Extra large screens, TV -->
 </html>
